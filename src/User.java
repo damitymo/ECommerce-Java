@@ -17,7 +17,13 @@ public class User {
         expenses.add(expense);
         System.out.println("Expense added: " + expense);
     }
-
+    public void removeExpense(int index) throws ExpenseNotFoundException {
+        if (index < 0 || index >= expenses.size()) {
+            throw new ExpenseNotFoundException("Expense not found at index: " + index);
+        }
+        Expense removedExpense = expenses.remove(index);
+        System.out.println("Expense removed: " + removedExpense);
+    }
     
 
 }
