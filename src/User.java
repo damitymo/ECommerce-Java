@@ -24,6 +24,28 @@ public class User {
         Expense removedExpense = expenses.remove(index);
         System.out.println("Expense removed: " + removedExpense);
     }
-    
+    public void updateExpense(int index, double amount, Date date, Category category, String description)
+            throws ExpenseNotFoundException {
+        if (index < 0 || index >= expenses.size()) {
+            throw new ExpenseNotFoundException("Expense not found at index: " + index);
+        }
+        Expense expense = expenses.get(index);
+        expense.setAmount(amount);
+        expense.setDate(date);
+        expense.setCategory(category);
+        expense.setDescription(description);
+        System.out.println("Expense updated: " + expense);
+    }
+    public void listExpenses() {
+        if (expenses.isEmpty()) {
+            System.out.println("No expenses found.");
+        } else {
+            System.out.println("List of expenses:");
+            for (int i = 0; i < expenses.size(); i++) {
+                System.out.println(i + ": " + expenses.get(i));
+            }
+        }
+    }
+
 
 }
